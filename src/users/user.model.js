@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        balance: {
+            type: Number,
+            required: true,
+            default: 0,
+        },
         role: {
             type: String,
             default: "user",

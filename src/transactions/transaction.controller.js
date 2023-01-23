@@ -12,13 +12,13 @@ const paystackCallback = catchAsync(async (req, res) => {
     res.status(httpStatus.CREATED).send(transaction);
 });
 
-const paymentReceipt = catchAsync(async (req, res) => {
-    const transaction = await transactionService.paymentReceipt(req.body);
-    res.status(httpStatus.CREATED).send(transaction);
+const getAllUserTransactions = catchAsync(async (req, res) => {
+    const transactions = await transactionService.getAllUserTransactions(req.user, req.params.id);
+    res.status(httpStatus.OK).send(transactions);
 });
 
 module.exports = {
     initPayment,
     paystackCallback,
-    paymentReceipt,
+    getAllUserTransactions,
 };

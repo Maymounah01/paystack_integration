@@ -18,23 +18,11 @@ router
     );
 
 router
-    .route("/receipt")
+    .route("/:id")
     .get(
         auth,
-        validate(transactionValidation.paymentReceipt),
-        transactionController.paymentReceipt
+        validate(transactionValidation.getAllUserTransactions),
+        transactionController.getAllUserTransactions
     );
 
-// router
-//     .route("/:reference")
-//     .get(
-//         validate(transactionValidation.verifyPayment),
-//         transactionController.verifyPayment
-//     );
-
 module.exports = router;
-
-// const {start Payment, createPayment, getPayment } = require('../controllers/payment');
-// const router = express. Router()
-// router.post('/', startPayment ); router.get('/createPayment', createPayment); router.get('/paymentDetails', getPayment);
-// module.exports = router;

@@ -1,9 +1,9 @@
 const Joi = require("joi");
+const { objectId } = require("../utils/custom.validation");
 
 const initPayment = {
     body: Joi.object().keys({
         email: Joi.string().required().email(),
-        fullname: Joi.string().required(),
         amount: Joi.number().required(),
     }),
 };
@@ -14,8 +14,14 @@ const verifyPayment = {
         trxref: Joi.string(),
     }),
 };
+const getAllUserTransactions = {
+    params: Joi.object().keys({
+        id: Joi.string().required().custom(objectId),
+    }),
+};
 
 module.exports = {
     initPayment,
     verifyPayment,
+    getAllUserTransactions,
 };
